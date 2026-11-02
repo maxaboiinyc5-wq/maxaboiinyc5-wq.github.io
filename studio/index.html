@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-4410165810512403">
+<meta name="description" content="Maxcade Games is an independent studio making free games, shows and apps for the web.">
+<title>Maxcade Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f6f6f4;--ink:#111111;--sub:#6e6e73;--line:#e8e8e6;
+  --accent:#4f46e5;--r:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55;font-size:16px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+svg{display:block}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .2s}
+nav.scrolled{border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:-.3px}
+.brand svg{width:26px;height:26px}
+.menu{display:flex;gap:30px;font-size:14px;font-weight:500;color:var(--sub)}
+.menu a{transition:color .15s}.menu a:hover,.menu a.on{color:var(--ink)}
+.burger{display:none;width:36px;height:36px;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:1.5px;background:var(--ink);position:relative}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink)}
+.burger span::before{top:-6px}.burger span::after{top:6px}
+.drawer{display:none}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;transition:background .15s,transform .1s,opacity .15s}
+.btn:active{transform:scale(.97)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:#2a2a2a}
+.btn-light{background:var(--bg2);color:var(--ink)}.btn-light:hover{background:#ececea}
+.btn svg{width:16px;height:16px}
+
+/* HERO */
+.hero{padding-top:96px;padding-bottom:72px}
+.kicker{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sub);margin-bottom:22px}
+.hero h1{font-size:clamp(44px,7.4vw,84px);font-weight:800;letter-spacing:-.045em;line-height:.98;max-width:820px}
+.hero h1 span{color:var(--sub)}
+.hero p{font-size:19px;color:var(--sub);max-width:520px;margin:26px 0 36px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:80px;border-top:1px solid var(--line)}
+.facts div{padding:26px 0 0}
+.facts b{display:block;font-size:30px;font-weight:700;letter-spacing:-.03em}
+.facts span{font-size:14px;color:var(--sub)}
+
+/* SECTION */
+section{padding:96px 0}
+.alt{background:var(--bg2)}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.shead .kicker{margin-bottom:12px}
+h2{font-size:clamp(32px,4.4vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.shead p{color:var(--sub);max-width:380px}
+
+/* FLAGSHIP */
+.flag{display:grid;grid-template-columns:1.15fr 1fr;border-radius:28px;overflow:hidden;background:#0f0f12;color:#fff}
+.flag .art{min-height:380px}
+.flag .art svg{width:100%;height:100%}
+.flag .txt{padding:52px;display:flex;flex-direction:column;justify-content:center}
+.flag .label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8b8bff;margin-bottom:14px}
+.flag h3{font-size:40px;font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:14px}
+.flag p{color:#a1a1aa;margin-bottom:30px}
+.flag .btn-dark{background:#fff;color:#111}.flag .btn-dark:hover{background:#e5e5e5}
+
+/* FILTERS */
+.tabs{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px}
+.tabs button{height:36px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:500;color:var(--sub);transition:all .15s}
+.tabs button.on{background:var(--ink);color:#fff}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-align:left;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(0,0,0,.25)}
+.thumb{aspect-ratio:16/10;width:100%}
+.thumb svg{width:100%;height:100%}
+.cbody{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.ctop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card h4{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.tag{font-size:12px;font-weight:600;color:var(--sub);background:var(--bg2);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.card p{font-size:14px;color:var(--sub)}
+.card .more{margin-top:auto;padding-top:12px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px}
+.card .more svg{width:14px;height:14px;transition:transform .15s}
+.card:hover .more svg{transform:translateX(3px)}
+
+/* COMING SOON */
+.soon{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.sitem{display:flex;gap:20px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.sitem .thumb{width:140px;flex-shrink:0;border-radius:14px;overflow:hidden}
+.sitem h4{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:6px 0 4px}
+.sitem p{font-size:14px;color:var(--sub)}
+.badge{font-size:12px;font-weight:600;color:var(--accent)}
+
+/* STUDIO */
+.studio{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.studio .big{font-size:clamp(24px,2.8vw,32px);font-weight:600;letter-spacing:-.025em;line-height:1.3}
+.studio .big span{color:var(--sub)}
+.values{display:grid;gap:0}
+.val{padding:22px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:44px 1fr;gap:6px 16px}
+.val:last-child{border-bottom:1px solid var(--line)}
+.val .n{font-size:13px;font-weight:600;color:var(--sub);padding-top:2px}
+.val h4{font-size:16px;font-weight:700}
+.val p{grid-column:2;font-size:14px;color:var(--sub)}
+
+/* TEAM */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.person{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.ava{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;letter-spacing:.02em;color:#fff;margin-bottom:22px}
+.person h4{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.person .role{font-size:14px;color:var(--accent);font-weight:600;margin:2px 0 12px}
+.person p{font-size:14px;color:var(--sub)}
+
+/* CAREERS */
+.careers{border-radius:28px;background:var(--ink);color:#fff;padding:72px 56px;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+.careers h2{color:#fff}
+.careers p{color:#a1a1aa;margin-top:16px;max-width:420px}
+.jobs{display:grid;gap:10px}
+.job{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-radius:14px;background:#1c1c1f;font-weight:600;font-size:15px}
+.job span{font-size:13px;font-weight:500;color:#a1a1aa}
+
+/* FOOTER */
+footer{padding:64px 0 48px;border-top:1px solid var(--line)}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.fgrid p{color:var(--sub);font-size:14px;margin-top:14px;max-width:280px}
+.fgrid h5{font-size:13px;font-weight:600;margin-bottom:14px}
+.fgrid ul{list-style:none;display:grid;gap:10px;font-size:14px;color:var(--sub)}
+.fgrid ul a:hover{color:var(--ink)}
+.legal{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--sub);flex-wrap:wrap;gap:10px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .2s}
+.modal.open{opacity:1;pointer-events:auto}
+.sheet{background:#fff;border-radius:24px;max-width:520px;width:100%;overflow:hidden;transform:translateY(16px);transition:transform .25s}
+.modal.open .sheet{transform:none}
+.sheet .thumb{aspect-ratio:16/9}
+.sheet .in{padding:28px}
+.sheet h3{font-size:28px;font-weight:800;letter-spacing:-.03em;margin:10px 0 8px}
+.sheet p{color:var(--sub);margin-bottom:22px}
+.sheet .meta{display:flex;gap:8px;flex-wrap:wrap}
+.close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center}
+.close svg{width:14px;height:14px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .flag,.studio,.careers{grid-template-columns:1fr}
+  .flag .art{min-height:260px}
+  .flag .txt{padding:36px}
+  .soon{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr 1fr}
+  .careers{padding:48px 32px;gap:32px}
+  .studio{gap:36px}
+}
+@media(max-width:640px){
+  .menu,.nav-cta{display:none}
+  .burger{display:flex}
+  .drawer{display:block;position:fixed;top:64px;left:0;right:0;z-index:29;background:#fff;border-bottom:1px solid var(--line);padding:8px 24px 20px;transform:translateY(-110%);transition:transform .25s}
+  .drawer.open{transform:none}
+  .drawer a{display:block;padding:14px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--line)}
+  .drawer a.btn{display:flex;align-items:center;justify-content:center;width:100%;height:52px;margin-top:20px;padding:0;border:0;border-radius:14px;font-size:16px;color:#fff}
+  .hero{padding-top:64px;padding-bottom:56px}
+  .hero p{font-size:17px}
+  .facts{grid-template-columns:repeat(3,1fr);row-gap:8px;margin-top:56px}
+  section{padding:72px 0}
+  .grid,.team{grid-template-columns:1fr}
+  .tabs{width:100%;overflow-x:auto}
+  .tabs button{flex:1}
+  .sitem .thumb{width:110px}
+  .flag h3{font-size:32px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid>div:first-child{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a href="#top" class="brand"><svg viewBox="0 0 26 26"><rect width="26" height="26" rx="7" fill="#111"/><path d="M7 18V8l6 6 6-6v10" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Maxcade Games</a>
+  <div class="menu"><a href="#games">Games</a><a href="#studio">Studio</a><a href="#careers">Careers</a></div>
+  <a class="btn btn-dark nav-cta" style="height:38px;padding:0 18px;font-size:14px" href="/game-crate/">Play Game Crate</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span></button>
+</div></nav>
+<div class="drawer" id="drawer">
+  <a href="#games">Games</a><a href="#studio">Studio</a><a href="#careers">Careers</a>
+  <a class="btn btn-dark" href="/game-crate/">Play Game Crate</a>
+</div>
+
+<header class="wrap hero" id="top">
+  <div class="kicker rv">Independent game studio</div>
+  <h1 class="rv">We make games,<br>shows <span>and apps</span><br>for the web.</h1>
+  <p class="rv">Maxcade Games is a small indie studio building free things you can play and use right in your browser, on any phone or computer.</p>
+  <div class="row rv">
+    <a class="btn btn-dark" href="#games">Explore our work</a>
+    <a class="btn btn-light" href="#studio">About the studio</a>
+  </div>
+  <div class="facts rv">
+    <div><b id="f-projects">0</b><span>Projects released</span></div>
+    <div><b>$0</b><span>Always free</span></div>
+    <div><b>3</b><span>Team members</span></div>
+  </div>
+</header>
+
+<section class="alt" id="games"><div class="wrap">
+  <div class="shead rv">
+    <div><div class="kicker">Flagship</div><h2>Game Crate</h2></div>
+    <p>Our game console. A whole library of Maxcade games on one cartridge shelf.</p>
+  </div>
+  <div class="flag rv">
+    <div class="art" id="flag-art"></div>
+    <div class="txt">
+      <div class="label">Console</div>
+      <h3>Every game.<br>One shelf.</h3>
+      <p>Pick a cartridge and press play. Arcade, sports, tycoon, action and sim games, with new ones added all the time. Save it to your home screen and it works like a real app.</p>
+      <div><a class="btn btn-dark" href="/game-crate/">Play Game Crate <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    </div>
+  </div>
+
+  <div class="shead rv" style="margin-top:96px">
+    <div><div class="kicker">Catalog</div><h2>More from Maxcade</h2></div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="alt" id="studio"><div class="wrap">
+  <div class="studio">
+    <div class="rv">
+      <div class="kicker">The studio</div>
+      <p class="big">Maxcade Games started with one idea: games should be fun first. <span>No downloads, no paywalls, no waiting. Every project is playtested until it feels right.</span></p>
+    </div>
+    <div class="values rv">
+      <div class="val"><div class="n">01</div><h4>Fun comes first</h4><p>If it isn't fun to play, it doesn't ship.</p></div>
+      <div class="val"><div class="n">02</div><h4>Playtested hard</h4><p>Every game gets tested and every bug gets hunted down before release.</p></div>
+      <div class="val"><div class="n">03</div><h4>Works everywhere</h4><p>Built for phones and computers, with controls made for each.</p></div>
+      <div class="val"><div class="n">04</div><h4>Free for everyone</h4><p>All of our games and apps are free to play.</p></div>
+    </div>
+  </div>
+
+  <div class="shead rv" style="margin-top:96px">
+    <div><div class="kicker">People</div><h2>Leadership</h2></div>
+    <p>The leadership behind every Maxcade title.</p>
+  </div>
+  <div class="team">
+    <div class="person rv"><div class="ava" style="background:#111"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></div><h4>Founder &amp; President</h4><div class="role">Executive Leadership</div><p>Sets the direction of the studio and leads quality assurance. Every release is reviewed and approved before launch.</p></div>
+    <div class="person rv"><div class="ava" style="background:#4f46e5"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div><h4>Technical Director</h4><div class="role">Engineering</div><p>Leads engineering across every title, from gameplay systems to performance on phone and desktop.</p></div>
+    <div class="person rv"><div class="ava" style="background:#0e9f6e"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5z"/></svg></div><h4>Creative Director</h4><div class="role">Creative &amp; Design</div><p>Leads concept development and game design, shaping what the studio builds next.</p></div>
+  </div>
+</div></section>
+
+<section id="careers"><div class="wrap">
+  <div class="careers rv">
+    <div>
+      <div class="kicker" style="color:#8b8bff">Careers</div>
+      <h2>Make games<br>with us.</h2>
+      <p>Maxcade Games is growing. We are looking for talented people who want to help build the next generation of browser games.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a href="#top" class="brand"><svg viewBox="0 0 26 26" width="26" height="26"><rect width="26" height="26" rx="7" fill="#111"/><path d="M7 18V8l6 6 6-6v10" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Maxcade Games</a>
+      <p>Free games, shows and apps for the web.</p>
+    </div>
+    <div><h5>Explore</h5><ul><li><a href="/game-crate/">Game Crate</a></li><li><a href="#games">Catalog</a></li><li></li></ul></div>
+    <div><h5>Studio</h5><ul><li><a href="#studio">About</a></li><li><a href="#studio">Leadership</a></li><li><a href="#careers">Careers</a></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 Maxcade Games. All rights reserved.</span><span>maxcadegames.org</span></div>
+</div></footer>
+
+<div class="modal" id="modal"><div class="sheet" style="position:relative">
+  <button class="close" id="close" aria-label="Close"><svg viewBox="0 0 14 14"><path d="M2 2l10 10M12 2L2 12" stroke="#111" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  <div class="thumb" id="m-thumb"></div>
+  <div class="in"><span class="tag" id="m-type"></span><h3 id="m-title"></h3><p id="m-desc"></p><div class="meta" id="m-meta"></div></div>
+</div></div>
+
+<script>
+/* ---------- ARTWORK (hand-drawn SVG, no emojis) ---------- */
+const W='viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice"';
+const art={
+crate:()=>{let s=`<svg ${W.replace('320 200','560 380')}><rect width="560" height="380" fill="#0f0f12"/>`;
+  const c=['#6366f1','#f43f5e','#10b981','#f59e0b','#06b6d4','#a855f7','#ef4444','#84cc16'];
+  for(let r=0;r<2;r++)for(let i=0;i<4;i++){const x=70+i*110,y=60+r*140,k=c[r*4+i];
+    s+=`<rect x="${x}" y="${y}" width="86" height="116" rx="10" fill="#1d1d22"/><rect x="${x+8}" y="${y+8}" width="70" height="62" rx="6" fill="${k}"/><rect x="${x+8}" y="${y+80}" width="44" height="6" rx="3" fill="#3f3f46"/><rect x="${x+8}" y="${y+92}" width="28" height="6" rx="3" fill="#2e2e33"/>`;}
+  return s+`<rect x="40" y="338" width="480" height="6" rx="3" fill="#26262b"/></svg>`},
+tower:()=>`<svg ${W}><rect width="320" height="200" fill="#eef2ff"/><g stroke="#c7d2fe" stroke-width="3" stroke-dasharray="6 6"><line x1="80" y1="140" x2="160" y2="70"/><line x1="160" y1="70" x2="240" y2="130"/><line x1="80" y1="140" x2="240" y2="130"/></g><circle cx="80" cy="140" r="26" fill="#4f46e5"/><circle cx="160" cy="70" r="22" fill="#94a3b8"/><circle cx="240" cy="130" r="26" fill="#ef4444"/><g fill="#fff" font-family="Inter" font-weight="700" font-size="15" text-anchor="middle"><text x="80" y="145">24</text><text x="160" y="75">10</text><text x="240" y="135">18</text></g></svg>`,
+target:()=>`<svg ${W}><rect width="320" height="200" fill="#fff1f2"/><circle cx="160" cy="100" r="70" fill="#f43f5e"/><circle cx="160" cy="100" r="52" fill="#fff"/><circle cx="160" cy="100" r="34" fill="#f43f5e"/><circle cx="160" cy="100" r="16" fill="#fff"/><circle cx="160" cy="100" r="6" fill="#f43f5e"/><g stroke="#111" stroke-width="2.5"><line x1="236" y1="100" x2="270" y2="100"/><line x1="50" y1="100" x2="84" y2="100"/></g></svg>`,
+clock:()=>`<svg ${W}><rect width="320" height="200" fill="#1e1b4b"/><circle cx="252" cy="48" r="16" fill="#fde68a"/><circle cx="260" cy="42" r="14" fill="#1e1b4b"/><circle cx="150" cy="104" r="62" fill="#fff"/><circle cx="150" cy="104" r="54" fill="none" stroke="#e0e7ff" stroke-width="2"/><g stroke="#111" stroke-linecap="round"><line x1="150" y1="104" x2="150" y2="62" stroke-width="4"/><line x1="150" y1="104" x2="178" y2="104" stroke-width="5"/></g><path d="M118 52a62 62 0 0 0-26 30" stroke="#a5b4fc" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M86 72l6 12 10-8" stroke="#a5b4fc" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="150" cy="104" r="5" fill="#111"/></svg>`,
+test:()=>`<svg ${W}><rect width="320" height="200" fill="#ecfdf5"/><path d="M40 100 Q70 40 100 100 T160 100 T220 100 T280 100" stroke="#10b981" stroke-width="5" fill="none" stroke-linecap="round"/><g fill="#a7f3d0"><circle cx="70" cy="160" r="10"/><circle cx="100" cy="160" r="10"/><circle cx="130" cy="160" r="10"/></g><circle cx="160" cy="160" r="10" fill="#10b981"/><rect x="200" y="36" width="80" height="30" rx="15" fill="#10b981"/><path d="M228 51l7 7 13-13" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+bot:()=>`<svg ${W}><rect width="320" height="200" fill="#fefce8"/><rect x="108" y="38" width="104" height="128" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><g fill="#e5e7eb"><rect x="122" y="58" width="76" height="6" rx="3"/><rect x="122" y="74" width="60" height="6" rx="3"/><rect x="122" y="90" width="70" height="6" rx="3"/><rect x="122" y="106" width="50" height="6" rx="3"/></g><rect x="122" y="128" width="44" height="18" rx="9" fill="#facc15"/><g stroke="#111" stroke-width="4" fill="none" stroke-linecap="round"><path d="M88 46V28h18"/><path d="M214 28h18v18"/><path d="M232 158v18h-18"/><path d="M106 176H88v-18"/></g></svg>`,
+ads:()=>`<svg ${W}><rect width="320" height="200" fill="#f0f9ff"/><rect x="50" y="30" width="220" height="100" rx="12" fill="#fff" stroke="#e0f2fe" stroke-width="2"/><rect x="66" y="46" width="70" height="68" rx="8" fill="#0ea5e9"/><rect x="150" y="54" width="100" height="10" rx="5" fill="#111"/><rect x="150" y="74" width="80" height="8" rx="4" fill="#cbd5e1"/><rect x="150" y="94" width="56" height="18" rx="9" fill="#0ea5e9"/><rect x="50" y="146" width="220" height="30" rx="8" fill="#0c4a6e"/><rect x="62" y="157" width="90" height="8" rx="4" fill="#7dd3fc"/><rect x="226" y="153" width="32" height="16" rx="8" fill="#fff"/></svg>`,
+toon:()=>`<svg ${W}><rect width="320" height="200" fill="#fff7ed"/><rect x="0" y="22" width="320" height="22" fill="#111"/><rect x="0" y="156" width="320" height="22" fill="#111"/><g fill="#fff7ed">${Array.from({length:11},(_,i)=>`<rect x="${8+i*30}" y="28" width="14" height="10" rx="2"/><rect x="${8+i*30}" y="162" width="14" height="10" rx="2"/>`).join('')}</g><circle cx="160" cy="100" r="36" fill="#f97316"/><path d="M150 84v32l26-16z" fill="#fff"/></svg>`,
+jail:()=>`<svg ${W}><rect width="320" height="200" fill="#f1f5f9"/><rect x="70" y="40" width="180" height="130" rx="10" fill="#334155"/><rect x="84" y="54" width="152" height="102" rx="4" fill="#475569"/><g fill="#94a3b8">${[0,1,2,3,4,5].map(i=>`<rect x="${96+i*24}" y="54" width="8" height="102"/>`).join('')}</g><rect x="84" y="96" width="152" height="8" fill="#94a3b8"/><circle cx="214" cy="100" r="6" fill="#fbbf24"/></svg>`,
+golf:()=>`<svg ${W}><rect width="320" height="200" fill="#e0f2fe"/><path d="M0 140 Q80 100 160 130 T320 120 V200 H0z" fill="#22c55e"/><path d="M0 160 Q100 130 200 160 T320 150 V200 H0z" fill="#16a34a"/><ellipse cx="200" cy="146" rx="34" ry="8" fill="#4ade80"/><ellipse cx="200" cy="146" rx="5" ry="2" fill="#14532d"/><line x1="200" y1="146" x2="200" y2="70" stroke="#111" stroke-width="3"/><path d="M200 70l36 12-36 12z" fill="#ef4444"/><circle cx="110" cy="164" r="6" fill="#fff"/></svg>`
+};
+
+/* ---------- DATA ---------- */
+const projects=[
+ {id:'tower',name:'Tower Brawl',type:'Game',genre:'Strategy',desc:'Capture towers, send your troops and take over the whole map before the other side does.',year:'2026'},
+ {id:'target',name:'Target Blast',type:'Game',genre:'Arcade',desc:'A carnival shooting gallery. Hit the targets, rack up points and beat your high score.',year:'2026'},
+ {id:'clock',name:'Fall Back!',type:'Game',genre:'Arcade',desc:'It is daylight savings night and the clocks go back. Sneak a midnight snack without getting caught.',year:'2026'},
+ {id:'toon',name:'Gristle Creek',type:'Show',genre:'Cartoon',desc:'An animated cartoon series. Watch the first episode, "Five Second Game."',year:'2026'},
+ {id:'test',name:'Test Zone',type:'App',genre:'Just for fun',desc:'Hearing test, IQ test, eye test and color blind test. All for fun, all in one place.',year:'2026'},
+ {id:'bot',name:'Homework Bot',type:'App',genre:'Tool',desc:'Snap a photo of your homework and get it checked and fixed in seconds. Works with your camera or your photo library.',year:'2026'},
+ {id:'ads',name:'AdCrate',type:'App',genre:'Tool',desc:'Design your own ads, like the big ad networks do, with pretend money.',year:'2026'}
+];
+
+/* ---------- RENDER ---------- */
+document.getElementById('flag-art').innerHTML=art.crate();
+const tabs=['All','Game','Show','App'],tabNames={All:'All',Game:'Games',Show:'Shows',App:'Apps'};
+let cur='All';
+const T=document.getElementById('tabs'),G=document.getElementById('grid');
+const arrow='<svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function render(){
+  T.innerHTML=tabs.map(t=>`<button class="${t===cur?'on':''}" data-t="${t}">${tabNames[t]}</button>`).join('');
+  G.innerHTML=projects.filter(p=>cur==='All'||p.type===cur).map(p=>`
+    <button class="card" data-id="${p.id}">
+      <div class="thumb">${art[p.id]()}</div>
+      <div class="cbody">
+        <div class="ctop"><h4>${p.name}</h4><span class="tag">${p.genre}</span></div>
+        <p>${p.desc}</p>
+        <span class="more">Learn more ${arrow}</span>
+      </div>
+    </button>`).join('');
+}
+T.onclick=e=>{const t=e.target.closest('button');if(t){cur=t.dataset.t;render()}};
+render();
+
+/* counters */
+function count(el,to){let n=0;const step=()=>{n++;el.textContent=n;if(n<to)setTimeout(step,90)};if(to>0)step()}
+count(document.getElementById('f-projects'),projects.length+1);
+
+/* modal */
+const M=document.getElementById('modal');
+G.addEventListener('click',e=>{
+  const c=e.target.closest('.card');if(!c)return;
+  const p=projects.find(x=>x.id===c.dataset.id);
+  document.getElementById('m-thumb').innerHTML=art[p.id]();
+  document.getElementById('m-type').textContent=p.type;
+  document.getElementById('m-title').textContent=p.name;
+  document.getElementById('m-desc').textContent=p.desc;
+  document.getElementById('m-meta').innerHTML=`<span class="tag">${p.genre}</span><span class="tag">Phone + computer</span><span class="tag">Free</span><span class="tag">${p.year}</span>`;
+  M.classList.add('open');
+});
+document.getElementById('close').onclick=()=>M.classList.remove('open');
+M.onclick=e=>{if(e.target===M)M.classList.remove('open')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')M.classList.remove('open')});
+
+/* nav */
+const nav=document.getElementById('nav'),D=document.getElementById('drawer');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>8),{passive:true});
+document.getElementById('burger').onclick=()=>D.classList.toggle('open');
+D.querySelectorAll('a').forEach(a=>a.onclick=()=>D.classList.remove('open'));
+const secs=['games','studio','careers'].map(id=>document.getElementById(id));
+addEventListener('scroll',()=>{let on='';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)on=s.id});
+  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+on))},{passive:true});
+
+/* reveal */
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12}):null;
+document.querySelectorAll('.rv').forEach(el=>io?io.observe(el):el.classList.add('in'));
+</script>
+</body>
+</html>
